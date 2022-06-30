@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": "./index.js",
+  "bin": {
+    "wheather": "index.js"
+  },
+  "type": "module",
   "scripts": {
-    "dev" : "node index.js",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pavel Permyakov",
   "license": "ISC",
-  
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "dedent": "^0.7.0"
+  }
 }
