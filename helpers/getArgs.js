@@ -1,4 +1,4 @@
-export const getArgs = (args) => {
+const getArgs = (args) => {
     let res = {}
     let currentKey;
 
@@ -13,3 +13,5 @@ export const getArgs = (args) => {
     });
     return res
 }
+
+export default getArgs;

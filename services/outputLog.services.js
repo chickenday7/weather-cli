@@ -14,7 +14,7 @@ const outputError = (error) => {
    
 }
 
-const outputSuccess = (success) => {
+const outputSuccess =  (success) => {
     return (
         console.log(dedent`-------------------
         ${chalk.bgGreen(" SUCCESS ")}

@@ -1,16 +1,20 @@
 import {homedir} from "os"
 import { join } from "path";
 import { promises } from "fs";
+import { outputSuccess } from "./outputLog.services.js";
+
 
 const dataPath = join(homedir(), "weatherData.json")
 
 const saveKeyValue = async (key, value) => {
-    const data = {};
+    let data = {};
     if(await isExist(dataPath)){
          data = await getData(dataPath)
     }
     data[key] = value
     await promises.writeFile(dataPath, JSON.stringify(data))
+
+
 }
 
 const isExist = async (path) => {
@@ -23,8 +27,9 @@ const isExist = async (path) => {
 }
 
 
-const getKeyValue = (path) => {
-    return await getData(path)
+const getKeyValue = async (pathkey) => {
+    const data =  await getData(path)
+    return data[pathkey]
 }
 
 
