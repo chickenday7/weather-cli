@@ -1,10 +1,13 @@
 import {homedir} from "os"
 import { join } from "path";
 import { promises } from "fs";
-import { outputSuccess } from "./outputLog.services.js";
+import { getExternalIp, getGeolocation, getWeather } from "./api.services";
 
 
-const dataPath = join(homedir(), "weatherData.json")
+
+
+
+export const dataPath = join(homedir(), "weatherData.json")
 
 const saveKeyValue = async (key, value) => {
     let data = {};
@@ -38,5 +41,16 @@ const getData = async (path) => {
     return JSON.parse(file)
 
 } 
+
+
+export const initialValues = async () => {
+    let initialData = {}
+    initialData[myIp] = await getExternalIp()
+    const {latitude, longitude, ...other } = await getGeolocation(myIp)
+    console.log(other);
+    initialData = await getWeather(latitude, longitude)
+
+}
+
 
 export {saveKeyValue}

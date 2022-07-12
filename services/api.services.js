@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const getCoordinates = async (city) => {
+export const getCoordinates = async (city) => {
     return await axios.get('http://api.openweathermap.org/geo/1.0/direct', {
         params: {
             q: city,
@@ -14,8 +14,7 @@ const getCoordinates = async (city) => {
 
 
 
-const getWeather = async (city) => {
-    const {lat, lon} = await getCoordinates(city)
+export const getWeather = async (lat, lon) => {
     return await axios.get("https://api.openweathermap.org/data/2.5/weather", {
         params: {
             lat,
@@ -28,6 +27,21 @@ const getWeather = async (city) => {
 }
 
 
+export const getExternalIp = async () => {
+    return await axios.get('https://api.ipify.org').then(({data}) => data )
+}
+
+export const getGeolocation = async (ip) => {
+    return await axios.get('https://api.ip2location.com/v2/',{
+        params: {
+            ip,
+            key: "XA19RDMAEO",
+            package: "WS10"
+        }
+    }).then(({data:response}) => response)
+}
 
 
-export {getWeather}
+
+
+
