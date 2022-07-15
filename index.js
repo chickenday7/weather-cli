@@ -3,9 +3,9 @@ import dotenv from "dotenv"
 import  getArgs  from "./helpers/getArgs.js"
 import { getExternalIp } from "./services/api.services.js"
 import { outputError, outputHelp, outputSuccess } from "./services/outputLog.services.js"
-import { initialValues, saveKeyValue } from "./services/storage.services.js"
+import { dataPath, initialValues, saveKeyValue } from "./services/storage.services.js"
 
-initApp()
+
 const saveToken = async (token) => {
     if(typeof token !== "string" ){
         outputError("Токен не был введен")
@@ -23,7 +23,6 @@ const saveToken = async (token) => {
 const initApp = async () => {
     dotenv.config()
     initialValues()
-   
     const args = getArgs(process.argv)    
 
     if(args.h){
@@ -39,6 +38,6 @@ const initApp = async () => {
     }
 
     return;
-    
 }
+initApp()
 

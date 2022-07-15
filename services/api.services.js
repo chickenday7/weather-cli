@@ -14,12 +14,12 @@ export const getCoordinates = async (city) => {
 
 
 
-export const getWeather = async (lat, lon) => {
+export const getWeather = async (lat, lon, key) => {
     return await axios.get("https://api.openweathermap.org/data/2.5/weather", {
         params: {
             lat,
             lon,
-            appid: "b6e5d1644981d1ccad49bcbe54456db9",
+            appid: key,
             units: "metric",
             lang: "ru"
         }

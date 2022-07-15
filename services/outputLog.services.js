@@ -7,7 +7,7 @@ const outputError = (error) => {
     return (
         console.log(dedent`-------------------
         ${chalk.bgRed("ERROR")}
-        -${error}
+        -${chalk.red(error)}
         -------------------
         `)
     )
@@ -18,7 +18,7 @@ const outputSuccess =  (success) => {
     return (
         console.log(dedent`-------------------
         ${chalk.bgGreen(" SUCCESS ")}
-        -${success}
+        -${chalk.blue(success)}
         -------------------
         `)
     )
